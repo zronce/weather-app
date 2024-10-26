@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import React from 'react';
 import './weather.css';
 import { FiSearch } from 'react-icons/fi';
-import { WiDayCloudy, WiCloudy, WiRain, WiThunderstorm, WiSnow, WiDaySunny, WiNightClear, WiDaySunnyOvercast, WiFog, WiCloudyWindy, WiHumidity, WiBarometer, WiStrongWind, WiDust, WiTornado } from "react-icons/wi";
+import { WiDayCloudy, WiCloudy, WiRain, WiThunderstorm, WiSnow, WiDaySunny, WiDaySunnyOvercast, WiFog, WiCloudyWindy, WiHumidity, WiBarometer, WiStrongWind, WiDust, WiTornado } from "react-icons/wi";
 import Notification from './Notification';
 
 const Weather = () => {
@@ -53,12 +53,9 @@ const Weather = () => {
     }
   };
 
-  const fetchWeather = async (cityOrCoords) => {
+  const fetchWeather = async (city) => {
     try {
-      const url = typeof cityOrCoords === 'string'
-        ? `https://api.openweathermap.org/data/2.5/weather?q=${cityOrCoords}&appid=${import.meta.env.VITE_API_KEY}&units=metric`
-        : `https://api.openweathermap.org/data/2.5/weather?lat=${cityOrCoords.lat}&lon=${cityOrCoords.lon}&appid=${import.meta.env.VITE_API_KEY}&units=metric`;
-
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${import.meta.env.VITE_API_KEY}&units=metric`;
       const response = await fetch(url);
       const data = await response.json();
 
@@ -90,19 +87,8 @@ const Weather = () => {
   };
 
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        const coords = {
-          lat: position.coords.latitude,
-          lon: position.coords.longitude
-        };
-        fetchWeather(coords);
-      },
-      (error) => {
-        console.error("Geolocation not available or denied:", error);
-        fetchWeather("Manila");
-      }
-    );
+    // Optionally, set a default city to load on initial render
+    fetchWeather("Manila");
   }, []);
 
   const handleSearch = () => {
