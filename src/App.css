@@ -1,5 +1,5 @@
 .title {
-  padding-top: 2rem;
+  padding-top: 1rem;
   font-size: 2rem;
   font-weight: bold;
   color: #934fff;
@@ -36,4 +36,15 @@
   .subtitle {
     font-size: 1rem; /* Adjusted for portrait orientation and smaller devices */
   }
+}
+
+.footer {
+  text-align: center;
+  padding: 0.2rem;
+  background-color: #934fff; /* Adjust this color as needed */
+  color: white; /* Adjust text color as needed */
+  font-size: 0.9rem;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }

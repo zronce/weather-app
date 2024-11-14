@@ -186,7 +186,7 @@ const WeatherApp = () => {
 
           <div className='forecast-section'>
             <button className='toggle-forecast' onClick={toggleForecastVisibility}>
-              {isForecastVisible ? "Hide Forecast" : "Show 5 Day Forecast"}
+              {isForecastVisible ? "Hide Forecast" : "Show Forecast"}
             </button>
             {isForecastVisible && (
               <div className='forecast'>
